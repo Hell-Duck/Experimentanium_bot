@@ -5,6 +5,8 @@ data = f"""Mecceнджеры: {'<a href="https://wa.me/79104765321">WhatsApp</a>
 
 links = f"""{'<a href="https://experimentanium.ru/booking/">Внести предоплату</a>'}
 {'<a href="https://www.experimentanium.ru/schedule-tickets/">Афиша и билеты</a>'}
+{'<a href="https://experimentanium.ru/letnii-lager/">Лагерь</a>'}
+{'<a href="https://experimentanium.ru/show/urok-v-muzee/">Урок в музее</a>'}
 {'<a href="https://www.experimentanium.ru/howtoget/#parking">Парковка</a>'}
 {'<a href="https://www.experimentanium.ru/cafe/">Умное кафе</a>'}
 {'<a href="https://www.experimentanium.ru/store/">Магазин</a>'}

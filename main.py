@@ -1,10 +1,9 @@
 import telebot
 from telebot import types
 from info import *
-import os
-TOKEN = os.getenv('TOKEN')
-bot = telebot.TeleBot(TOKEN)
-'''try:
+
+
+try:
     with open('token.txt', 'r') as file:
         TOKEN = file.read().strip()
 
@@ -18,7 +17,7 @@ except FileNotFoundError:
     exit()
 except Exception as e:
     print(f"Ошибка при чтении токена: {e}")
-    exit()'''
+    exit()
 
 
 @bot.message_handler(commands = ['start'])
