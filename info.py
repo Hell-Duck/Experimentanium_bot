@@ -1,3 +1,4 @@
+
 data = f"""Mecceнджеры: {'<a href="https://wa.me/79104765321">WhatsApp</a>'}
 Электронная почта: enjoy@experimentanium.ru  
 Телефон музея: +7(495)120-05-20
