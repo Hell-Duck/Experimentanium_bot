@@ -70,6 +70,6 @@ def callback_message(callback):
         case 'get_birthday':
             bot.send_message(callback.message.chat.id, birthday, parse_mode="HTML")
         case 'get_address':
-            bot.send_message(callback.message.chat.id, 'Москва, метро «Сокол», Ленинградский проспект, д.80, к.11')
+            bot.send_message(callback.message.chat.id, address, parse_mode="HTML")
 
 bot.polling(none_stop=True)
