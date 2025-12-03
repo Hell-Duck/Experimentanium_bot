@@ -51,6 +51,7 @@ def main(message):
     markup.row(btn_price)
     markup.row(btn_show)
     markup.row(btn_birthday)
+    markup.row(btn_send_admin)
 
 
     bot.send_message(message.chat.id, 'Нажмите на кнопку для получения информации', reply_markup=markup)
