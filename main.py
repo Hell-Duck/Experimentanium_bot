@@ -3,7 +3,6 @@ from telebot import types
 from info import *
 
 
-
 try:
     with open('token.txt', 'r') as file:
         TOKEN = file.read().strip()
