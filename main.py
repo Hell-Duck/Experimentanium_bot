@@ -55,20 +55,30 @@ def main(message):
 
     bot.send_message(message.chat.id, 'Нажмите на кнопку для получения информации', reply_markup=markup)
 
-@bot.callback_query_handler(func = lambda callback: True)
+
+@bot.callback_query_handler(func=lambda callback: True)
 def callback_message(callback):
-    match callback.data:
-        case 'get_contact':
-            bot.send_message(callback.message.chat.id, data, parse_mode="HTML")
-        case 'get_work_time':
-            bot.send_message(callback.message.chat.id, 'Мы работаем каждый день с 9:30 до 20:00, кроме 31.12 и 01.01')
-        case 'get_links':
-            bot.send_message(callback.message.chat.id, links, parse_mode="HTML")
-        case 'get_excursions':
-            bot.send_message(callback.message.chat.id, excursions, parse_mode="HTML")
-        case 'get_birthday':
-            bot.send_message(callback.message.chat.id, birthday, parse_mode="HTML")
-        case 'get_address':
-            bot.send_message(callback.message.chat.id, address, parse_mode="HTML")
+    responses = {
+        'get_contact': (data, "HTML"),
+        'get_work_time': ('Мы работаем каждый день с 9:30 до 20:00, кроме 31.12 и 01.01', None),
+        'get_links': (links, "HTML"),
+        'get_excursions': (excursions, "HTML"),
+        'get_birthday': (birthday, "HTML"),
+        'get_address': (address, "HTML"),
+    }
+
+    if callback.data in responses:
+        text, parse_mode = responses[callback.data]
+
+        markup = types.InlineKeyboardMarkup()
+        btn_back = types.InlineKeyboardButton('Вернуться в меню', callback_data='back_to_menu')
+        markup.row(btn_back)
+
+        bot.send_message(callback.message.chat.id, text,
+                         parse_mode=parse_mode,
+                         reply_markup=markup)
+
+    elif callback.data == 'back_to_menu':
+        main(callback.message)
 
 bot.polling(none_stop=True)
