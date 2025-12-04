@@ -22,13 +22,15 @@ except Exception as e:
 
 @bot.message_handler(commands = ['start'])
 def menu(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    try:
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 
-    btn_start = types.KeyboardButton('Меню')
-    markup.row(btn_start)
+        btn_start = types.KeyboardButton('Меню')
+        markup.row(btn_start)
 
-    bot.send_message(message.chat.id, f'Здравствуйте, {message.from_user.first_name}!', reply_markup=markup)
-
+        bot.send_message(message.chat.id, f'Здравствуйте, {message.from_user.first_name}!', reply_markup=markup)
+    except Exception as e:
+        print(f"Ошибка при отправке сообщения: {e}")
 
 
 @bot.message_handler(func=lambda message: message.text == 'Меню')
@@ -80,4 +82,4 @@ def callback_message(callback):
     elif callback.data == 'back_to_menu':
         main(callback.message)
 
-bot.polling(none_stop=True)
+bot.polling(none_stop=True, skip_pending=True)
